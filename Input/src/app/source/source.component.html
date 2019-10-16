@@ -1,0 +1,20 @@
+<div class="col-md-4 offset-md-4">
+    <select  class="form-control ng-pristine ng-valid ng-touched" (change)="getSources($event)">
+        <option  value="bbc-news">BBC News</option>
+        <option  value="the-times-of-india">Times of India</option>
+        <option  value="fox-news">Fox News</option>
+        <option  value="espn">ESPN</option>
+        <option value="news24">News24</option>
+        <option  value="the-hindu">The Hindu</option>
+        <option  value="usa-today">USA Today</option>
+        <option  value="national-geographic">National Geographic</option>
+        <option  value="mirror">Mirror</option>
+    </select>
+</div>
+<div class="col-md-3 card card-body float-left" *ngFor = "let new of news" style="height: 400px">
+        <a href="{{new.url}}">
+            <img src="{{new.urlToImage}}"  alt="Entertainment News Image" class="card-img-top" style="height: 300px" >
+        </a>
+        <h6>{{new.title}} </h6>
+    </div>
+

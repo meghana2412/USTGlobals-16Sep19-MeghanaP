@@ -1,0 +1,17 @@
+<div  class="col-md-4 col-12 offset-md-4">
+    <select _ngcontent-hbi-c2="" class="form-control ng-pristine ng-valid ng-touched" (change)="getCategories($event)">
+        <option _ngcontent-hbi-c2="" value="entertainment">Entertainment</option>
+        <option _ngcontent-hbi-c2="" value="business">Business</option>
+        <option _ngcontent-hbi-c2="" value="general">General</option>
+        <option _ngcontent-hbi-c2="" value="health">Health</option>
+        <option _ngcontent-hbi-c2="" value="science">Science</option>
+        <option _ngcontent-hbi-c2="" value="sports">Sports</option>
+        <option _ngcontent-hbi-c2="" value="technology">Technology</option>
+    </select>
+</div>
+<div class="col-md-3 card card-body float-left" *ngFor = "let new of news"style="height: 400px">
+        <a href="{{new.url}}">
+            <img src="{{new.urlToImage}}"  alt="Entertainment News Image" class="card-img-top" style="height: 300px" >
+        </a>
+        <h6>{{new.title}} </h6>
+    </div>

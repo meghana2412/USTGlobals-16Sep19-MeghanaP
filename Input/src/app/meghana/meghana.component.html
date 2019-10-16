@@ -1,0 +1,28 @@
+<div class="col-md-3 float-left" >
+    <h5 class="text-center">Entertainment News</h5>
+    <div class="col-md-12 card card-body" *ngFor = "let new of news"style="height: 400px">
+        <a href="{{new.url}}">
+            <img src="{{new.urlToImage}}"  alt="Entertainment News Image" class="card-img-top" style="height: 300px" >
+        </a>
+        <h6>{{new.title}} </h6>
+    </div>
+    </div>
+    <div class="col-md-6 float-left">
+        <h5 class="text-center">Top news</h5>
+        <div class="col-md-12 card card-body" *ngFor = "let tnew of tnews"style="height: 600px">
+            <a href="{{tnew.url}}">
+                <img src="{{tnew.urlToImage}}"  alt="Entertainment News Image" class="card-img-top" style="height : 500px" >
+            </a>
+            <h6>{{tnew.title}} </h6>
+        </div>
+        </div>
+        <div class="col-md-3 float-left">
+            <h5 class="text-center">Sports News</h5>
+            <div class="col-md-12 card card-body" *ngFor = "let snew of snews"style="height: 400px">
+                <a href="{{snew.url}}">
+                    <img src="{{snew.urlToImage}}"  alt="Entertainment News Image" class="card-img-top" style="height: 300px">
+                </a>
+           
+                <h6>{{snew.title}} </h6>
+            </div>
+            </div>

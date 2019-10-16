@@ -1,0 +1,35 @@
+<div class="col-md-4 offset-4  card mt-4 mb-4">
+    <h1 class="text-center text-white bg-warning">Add Movies</h1>
+    <form action="" [formGroup]="form" (ngSubmit)="loginData(form)">
+        <div class="form-group">
+            <input type="text" name="movies" id="movies" class="form-control" placeholder="Add movie" formControlName="movie">
+            <div *ngIf="movie.touched && email.invalid">
+              <p *ngIf="movie.errors.required" class="text-danger">*this field is required</p>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="title" id="title" class="form-control" placeholder="Add titke" formControlName="title">
+            <div *ngIf="title.touched && title.invalid">
+                    <p *ngIf="title.errors.required" class="text-danger">*this field is required</p>
+                  </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="url" id="url" class="form-control" placeholder="image url" formControlName="url">
+            <div *ngIf="url.touched && url.invalid">
+              <p *ngIf="url.errors.required" class="text-danger">*this field is required</p>
+
+            </div>
+        </div>
+        <div class="form-group">
+<textarea name="desc" id="" cols="30" rows="10"class="form-control" placeholder="Add description" formControlName="desc"></textarea>            <div *ngIf="desc.touched && desc.invalid">
+                    <p *ngIf="desc.errors.required" class="text-danger">*this field is required</p>
+                  </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-success float-right "[disabled]>Add movie</button>
+        </div>
+
+    </form>
+</div>
+

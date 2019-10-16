@@ -1,0 +1,12 @@
+<div  class="col-md-4 offset-md-4">
+    <div  class="input-group">
+        <div  class="input-group-prepend">
+            <span  class="input-group-text">Search</span>
+        </div>
+        <input (keyup)="search($event)" class="form-control ng-valid ng-dirty ng-untouched" type="search">
+    </div>
+</div>
+<div class="col-md-3 card card-body float-left" *ngFor = "let movie of movies" style="height: 400px">
+        <img src="{{movie.Poster}}"   class="card-img-top" style="height: 300px" >
+    <h6>{{movie.Title}} </h6>
+</div>
