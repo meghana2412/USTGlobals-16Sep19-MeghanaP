@@ -1,0 +1,10 @@
+class First
+{
+       public static void main(Strings[] args)
+         {
+           system.out.println("Keep Smiling");
+           system.out.println("Everyday");
+           system.out.println(10+5);
+          }
+}
+           
