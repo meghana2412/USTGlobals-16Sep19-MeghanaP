@@ -1,0 +1,17 @@
+package com.ustglobals.thread.properties;
+
+public class MyTread extends Thread{
+	
+	public static void main(String[] args) {
+		
+		System.out.println("main started");
+		
+		String tname = Thread.currentThread().getName();
+		System.out.println("current thread is "+tname);
+		
+		System.out.println(10/0);
+		
+		System.out.println("main ended");
+	}
+
+}

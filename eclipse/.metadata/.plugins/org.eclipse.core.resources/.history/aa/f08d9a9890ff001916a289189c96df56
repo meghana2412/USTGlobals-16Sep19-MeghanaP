@@ -1,0 +1,16 @@
+package com.ustglobal.maps;
+
+import java.util.HashMap;
+
+public class TestA {
+
+	public static void main(String[] args) {
+		
+		HashMap hm = new HashMap();
+		hm.compute("Meghana",9481335280);
+		hm.compute("Pavan",9916479132);
+		hm.compute("Sachin",7026633248);
+
+		System.out.println("data : "+hm);
+	}
+}

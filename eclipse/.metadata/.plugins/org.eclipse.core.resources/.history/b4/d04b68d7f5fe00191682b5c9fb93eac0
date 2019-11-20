@@ -1,0 +1,13 @@
+package com.ustglobal.sorting.set;
+
+import java.util.HashSet;
+
+public class TestG {
+
+	public static void main(String[] args) {
+		 HashSet<Employee> hs = new HashSet();
+		 hs.add(Employee e1 = new Employee(12,"Meghana",98765));
+		 hs.add(Employee e2 = new Employee(31,"Pavan",87645));
+		 
+	}
+}

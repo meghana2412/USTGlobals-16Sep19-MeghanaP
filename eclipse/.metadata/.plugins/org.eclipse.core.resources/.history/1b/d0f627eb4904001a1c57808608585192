@@ -1,0 +1,27 @@
+package com.ustglobals.thread.defining;
+
+public class TestTread {
+
+	public static void main(String[] args) {
+		
+		System.out.println("main started");
+		
+		MyThread my = new MyThread();
+		/*
+		 * Don't call run() method, it behaves like a normal program 
+		 * All code will be executed inside main thread only
+		 */
+		//my.run();
+		
+		my.start();
+		my.start(); 
+
+
+		for(int j = 0 ; j <10 ; j++)
+		{
+			System.out.println("main thread");
+		}
+		
+		System.out.println("main ended");
+	}
+}

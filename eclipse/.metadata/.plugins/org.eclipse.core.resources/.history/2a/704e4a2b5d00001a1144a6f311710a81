@@ -1,0 +1,5 @@
+package com.ustglobals.jdbcapp;
+
+public class MyFirstJDBC {
+
+}

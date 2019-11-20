@@ -1,0 +1,20 @@
+package com.ustglobals.thread.defining;
+
+public class TestTread {
+
+	public static void main(String[] args) {
+		
+		System.out.println("main started");
+		
+		MyThread my = new MyThread();
+		
+		my.start();
+		
+		for(int j = 0 ; j <10 ; j++)
+		{
+			System.out.println("main thread");
+		}
+		
+		System.out.println("main ended");
+	}
+}

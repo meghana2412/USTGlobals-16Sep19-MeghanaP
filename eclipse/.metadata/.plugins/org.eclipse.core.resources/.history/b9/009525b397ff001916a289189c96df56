@@ -1,0 +1,13 @@
+package com.ustglobal.maps;
+
+import java.util.LinkedHashMap;
+
+public class TestD {
+	public static void main(String[] args) {
+
+		LinkedHashMap<String, Integer> lh = new LinkedHashMap<String, Integer>();
+		lh.put("Bangalore", 560068);
+		lh.put("crp", 573116);
+		lh.put("Hassan", 573201);
+	}
+}

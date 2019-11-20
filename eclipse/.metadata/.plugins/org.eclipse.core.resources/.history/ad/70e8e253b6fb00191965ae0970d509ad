@@ -1,0 +1,14 @@
+package com.ustglobal.exception.first;
+
+public class TestG {
+
+	public static void main(String[] args) {
+		System.out.println("main started");
+		
+		PayTM p = new PayTM();
+		p.book();
+		
+		
+		System.out.println("main ended");
+	}
+}

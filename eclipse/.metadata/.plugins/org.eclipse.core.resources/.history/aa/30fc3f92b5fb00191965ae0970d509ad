@@ -1,0 +1,13 @@
+package com.ustglobal.exception.first;
+
+public class PayTM {
+
+	void book()
+	{
+		System.out.println("PayTM started");
+		
+		
+		
+		System.out.println("PayTM ended");
+	}
+}

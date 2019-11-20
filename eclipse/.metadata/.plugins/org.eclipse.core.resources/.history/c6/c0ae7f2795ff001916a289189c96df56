@@ -1,0 +1,37 @@
+package com.ustglobal.maps;
+
+import java.util.HashMap;
+
+public class TestB {
+
+	public static void main(String[] args) {
+		
+		HashMap hm = new HashMap();
+		hm.put("Meghana",94813);
+		hm.put("Pavan",99164);
+		hm.put("Sachin",7026);
+		
+		HashMap hm1 = new HashMap();
+		hm1.put("deepu",2345);
+		hm1.put("Sandeep", 3456);
+		hm1.put("darshu", 87654);
+		
+		boolean hasKey = hm.containsKey("key present is: "+"ghana");
+		System.out.println("key present is: "+hasKey);
+		System.out.println("");
+		
+		boolean hasValue = hm.containsValue(7026);
+		System.out.println("value present is : "+hasValue);
+		System.out.println("========================================");
+		
+		hm.putAll(hm1);
+		System.out.println("after putting all : "+hm);
+		System.out.println("");
+		
+		System.out.println("the map size is : "+hm.size());
+		System.out.println("");
+		
+		boolean isEmpty = hm.isEmpty();
+		System.out.println("Map is Empty : "+isEmpty);
+	}
+}

@@ -1,0 +1,17 @@
+package com.ustglobals.thread.properties;
+
+public class MyPriorityThread extends Thread{
+
+	public static void main(String[] args) {
+		
+		System.out.println("main started");
+		int p = Thread.currentThread().getPriority();
+		System.out.println("main thread priority : "+p);
+		
+		MyPriorityThread t = new MyPriorityThread();
+		int q = t.getPriority();
+		System.out.println("myPriority thread priority : "+q);
+		
+		System.out.println("main ended");
+	}
+}

@@ -1,0 +1,34 @@
+package com.ustglobal.sorting.list;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class PenMain {
+
+	public static void main(String[] args) {
+		ArrayList al = ArrayList<Pen> ();
+		Pen p1 = new Pen(5.6,"Nataraja");
+		Pen p2 = new Pen(10.4, "Classmate");
+		Pen p3 = new Pen(20,"Writometer");
+		Pen p4 = new Pen(30,"Jumbowritometer");
+		
+		al.add(p1);
+		al.add(p2);
+		al.add(p3);
+		al.add(p4);
+		
+		displayPenDetails(al);
+		
+	}
+	static void displayPenDetails(ArrayList<Pen> al)
+	{
+		Iterator<Pen> it = al.iterator();
+		 while(it.hasNext())
+		 {
+			 Pen m = it.next();
+			 System.out.println("Price is : "+m.price);
+			 System.out.println("Color is : "+m.color);
+			 System.out.println("***************************");
+		 }
+	}
+}
