@@ -1,0 +1,32 @@
+<%@page import="com.ustglobal.empwebapp.dao.EmployeeDAO"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<%
+	EmployeeDAO info = (EmployeeInfo)request.getAttribute("info");
+%>
+<body>
+	<a href='./home' style='float: left'>Home</a>
+	<a href='./logout' style='float: right'>Logout</a>
+	<fieldset>
+		<legend>Employee info</legend>
+		<table align="center">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Email</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</fieldset>
+</body>
+</html>
