@@ -1,0 +1,417 @@
+
+             DDL(Data definition language)
+
+1.show databases; 
+  It is used to display the databases we have.
+
+2.create database database_name;
+  * create database db_name;
+   -It is used to create new database.
+
+3.use database_name;
+  * use db_name;
+   -It is used to add data to database.
+
+           CREATE
+
+4. create table table_name(column_name1 datatype, column_name2 datatype,    column_name3 datatype);
+   * create table product(pid int, pname varchar(12), quantity int);
+   -a new table will be created.
+
+5.show tables;
+  - it will show the tables present in our database.
+
+6. desc table_name;
+   * desc product;
+    -it will show the full table structure
+
+            DROP
+
+7.drop database database_name;
+  *drop database db_name;
+   -it will delete the entire database.
+
+8.drop table table_name;
+  *drop table product;
+   -it will delete the entire table.
+
+                 ALTER
+
+9. alter table table_name add column new_table_name datatype;
+   *alter table product add price int;
+   - it will add the new column to the table at the last.
+
+10. alter table table_name change colunm_name new_column_name datatype;
+    * alter table product change price cost int;
+    - it will change the old colunm name to new column name and the           datatype can be different.
+
+11. alter table table_name drop coulumn column_name;
+    * alter table product drop column cost;
+     - it will delete the column we have selected to drop.
+
+                RENAME
+
+12.rename table table_name to new_table_name;
+   * rename table product to product_info;
+    - it will change the old table name to new table name.
+
+       
+
+        DML(data manipulation language)
+
+            INSERT
+
+1. insert into table_name(column_namw1,column_name2,........column_name)
+    values(value1.value2 ......,valuen);
+    * insert into product_info(pid,pname,quantity)
+     values(101,'pencil',10);
+       -it is used to insert the value inside the table by its column_name aswell as the values       with their respective datatype.
+
+2. insert into table_name values(value1, value2,.....,valuen);
+  * insert into product_info values(102,'pen',5);
+   - here if we dont now the column name then we will prefer this       syntax.
+
+
+3. insert into table_name values(value1, value2,.....,valuen),(value1,          value2,.....,valuen),........,(value1, value2,.....,valuen);
+    * insert into product_info values(103,'book'),(104,'chocolate',30),             (105,'biscuit',1);
+       - we can add multiple data at a single time.
+
+          UPDATE
+
+1. update table_name set column_name = value;
+   * update product_info set quantity = 100;
+      - it will update the selected column content.
+
+         DELETE 
+
+
+
+
+1. delete from table_name;
+    * delete from product_info;
+
+
+         DQL(data query language)
+
+         SELECT
+
+       - it is used to retrieve the data.
+       - we can retrieve the data in 3 ways.
+           1) Projection : to select particular data from the column .
+               eg. to retrieve column_name from the table.
+                 syntax: slecet column_name from table_name;
+                          * select pname from product_info;
+
+           2) Selection  : it is used to select all the data from the table.
+                      syntax: select* from table_name;
+                              * select * from product_info;
+
+
+              *CONTRAINTS*
+
+       1)
+
+        
+
+                 ALIAS
+        1) SQL alias are used to give a table, or a column in a table, a temporary name.
+        2) they are used to make column names more readable.
+          syntax : slect column_name as alias_name from table_name;
+                     * select bloodgroup as bloodgrp from employee;
+
+
+             WHERE (CLAUSE)
+         
+        - it is used to update only one data in the column.
+         - it is the filtration logic.
+          syntax : select column_name ,.... from table_name 
+                    where condition;
+                   * select * from employee
+                     where deptno = 10;
+
+
+                   eg : update employee set mobileno= 9916479132
+                         where eid=2;
+
+                  eg : delete from employee 
+                        where eid=5;
+                         
+                  eg: select * from employee
+                                 where eid =1;
+
+                    EXPRESSION
+
+            - it is the statement which gives us the result.
+            a) Operators
+            b)operands : it is of two types
+                         - column_name
+                         - literal(the actual value)
+                       eg : salary + 5000= result
+                           here salary is the column name and 5000 is literals
+           Statements : it is the combination of operators and operands.     
+
+
+Q) write a query to disply salary of emp that is incremented by 5000
+       select salary+5000  as incrememnted_salary from employee;
+
+Q) write a query to disply salary of emp that is decremented by 5000
+     select salary-5000  as decrememnted_salary from employee;
+
+Q) write a query to disply anual salary of emp 
+      select salary*12 as anual_salary from employee;
+
+Q) write a query to disply per day salary of emp .
+         select salary/30  as perday_salary from employee;
+
+Q) write a query to display the result from emp table whose job designation is softwear          developer.
+          select * from employee
+           where designation = 'developer';
+
+Q) wqtd all the details of emp excluding whos is not working in deptno 20.
+         select * from employee
+        where deptno !=20;
+
+Q)wqtd record of emp whose salary is greater than 20000.
+           select * from employee
+          where salary > 20000;
+
+Q) wqtd record of emp whose age is less than 30.
+            select* from employee
+            where age < 30;
+Q)wqtd name,salary,email id , mobile whose age is greater than 20
+          select  name, salary, email mobileno from employee
+            where age > 20;
+ 
+Q) wqtd whose salary is greater than or equal to 25000
+           select * from employee
+         where salary >= 25000;
+Q)wqtd all the employee details who is working in dept no 20 aswell as salry is greater than     25000.
+         select * from employee
+         where deptno = 20 and salary >25000;
+Q) wqtd name,salary from the emp table who is working in dept no 10 and 20.
+        select name, salary from employee
+        where deptno= 10 and deptno=20;
+Q) wqtd to display emp details whose job design as tester and age is 21.
+        select * from employee
+        where  designation ='tester' and age=21;
+Q) wqtd all the record of the emp who is working as a tester or having salary more than 25000.
+      select * from employee
+      where designation ='tester' or salary>25000; 
+Q) wqtd name salary age from the emp table who is working in dept no 10 or 40 or 50 .
+         select name, salary, age from employee
+         where deptno=10 or deptno=40 or deptno=50;
+Q) wqtd emp detail whose age is more than20 and bloodgroup is B+.
+        select * from employee
+        where age >20 and bloodgroup = 'B+';
+Q) wqtd all the requirement of employee excluding tester.
+          select * from employee
+         where not designation='tester';
+              or
+          
+          select * from employee
+         where  designation!='tester';
+
+Q)wqtd name of all the emp who is working as HR or tester and salary is greater than 25000.
+            select name from employee
+             where designation ='HR'or designation ='tester' and salary > 25000;
+
+Q)wqtd all the emp excluding developer who are working in dept no 40.
+           select * from employee
+            where not designation='developer' and deptno=40;
+
+Q) wqtd all the developer who are working for dept no 10 or 40.
+        select * from employee
+        where designation='developer' and (deptno=10 or deptno=40);
+
+
+
+                         SPECIAL OPERATOR
+
+            1. IN  (it acts like a or operator) - it is used to evaluate the multipler values.
+               syntax :  select * from tablr_name
+                         where column_name in (list of values);
+
+           
+
+Q) wqtd all the detail of emp who is working in dept no 40,50,70,80.
+           select * from employee
+           where deptno in (40,50,70,80);
+Q)wqtd name of all the emp who is wprking as a tester, hr ,manager.
+           select name from employee
+           where designation in ('tester','HR','manager');
+ 
+Q)wqtd the detail of tester,maneger,developer who are working in deptno 20 or 30 and salary is        greater than 25000.
+             select * from employee
+              where designation in ('tester','manager','developer') and deptno in(20,30) and salary>25000;
+
+      
+
+            2.NOT IN  - it will heps to exclude the values which we dont want to add.
+                   syntax  : select * from employee
+                             where column_name not in (values1,value2.....);
+
+
+
+Q) wqtd all the record of employee excluding who is working as a tester tech support and HR.
+              select * from employee
+               where designation not in('tester','tech support','HR');
+Q) wqtd all the record of emp whose age is 20,25,30 and exclude all the detail of tester and          developer.
+                    select * from employee
+                 where age in (20,25,30) and designation not in ( 'teater' , 'developer');
+
+
+            3. BETWEEN -(it acts like AND operator) it is used for seraching based on range               of values.
+              syntax : select * from table_name
+                       where colum_name Between values1 and values2;
+
+Q) wqtd all the detail of emp whose age is betwn 20 to 40.
+           select * from employee
+             where age between 20 and 40;
+
+ Q) wqtd all the details of emp who are all hired during 2017 .
+        select * from  employee
+        where doj between '2017-01-01' and '2017-12-31';
+      
+
+            
+            4. NOT BETWEEN -(it acts like AND operator) it is used for seraching based on range               of values.
+              syntax : select * from table_name
+                       where colum_name  not Between values1 and values2;
+
+Q) wqtd all therecord of the emp excluding whodse salary is in the range is 25000 to 30000.
+            select * from employee
+           where salary not between 25000 and 30000;
+
+
+
+
+
+
+
+                         SINGLE ROW SUBQUERY
+
+                 - if the result from the inner query is single value or singlr record then                       that is knws as single row subquery.
+
+                     syntax : select *from table_name 
+                              where column_name operator (select * from table_name);
+
+Q) wqtd all the record of the emp whose date of joining is same as megha's joining.
+                  select * from employee
+                  where doj= ( select  doj from employee  where name='megha');
+    
+
+Q)wqtd the second maximum salary.
+       select max(salary) from employee where salary <  (select max(salary) from employee);
+
+
+
+
+NOte : 1) ANY - if any one condition satisfies the condition inside the paranthesis then we                 will get the result.
+        
+       2) ALL - we will get the result set if and only if all the conditions get satisfyied .
+
+
+
+                              MULTI ROW SUBQUERY
+
+                     - whenever we r using in, any ,all then we will get more                              than one result that, that will be executed by outer query. this is known as            multirow subquery.
+
+              syntax : select * from table_name 
+                       where column_name operator[in/any/all] (select *from table_name);
+
+Q)wqtd name of the emp who is working in a location which has atleast one 'a' the location.
+                     select name from employee where deptno in (select deptno from department
+            where location like '%a%');
+
+Q)wqtd all the record of the emp who is working in admin ,operator,development.
+           select * from employee where deptno 
+                  in(select deptno from department where dname in                                                                                    ('admin','operation','development'));
+
+
+
+
+                               GROUPBY
+
+                        - it will execute after the from execution.
+                        - then count will execute and at last select will execute.
+
+                    syntax : select count(*) from table_name group by forign column_name;
+ 
+Q) wqtd max salary for each dept.
+       select max(salary) from employee group by deptno;
+
+             order of execution  : from, where, group by, select.
+
+Q) wqtd the highest salary given to HR for each dept.
+       select max(salary) from employee  where designation = 'HR' group by deptno;
+
+
+
+                                HAVING CLAUS
+
+                       - it is used to filter the group by records.
+                       - we have to pass only one condition inside the having claus.
+                syntax : select * from table_name where condition group by column_name having                                                       condition;
+
+
+
+    ORDER OF EXECUTION
+    1. from
+    2. where
+    3.group by
+    4.having
+    5.select
+
+Q) wqtd  deptno  which has atleast 2 emp .
+         select deptno from employee group by deptno having count(deptno)>=2;
+
+ ORDER OF EXECUTION OF ALL THE CLAUS
+    1. from
+    2. where
+    3. group by
+    4. having
+    5.select
+    6.order by
+
+            TRANSACTION CONTROL LANGUAGRE
+
+             1.committe - it is used to save the current transaction.
+             2.rollback - it is used to get the previous transaction.
+             3. savepoint  - it always work with rollback, if we declare a savepoint then from                               their we can rollback without affecting the previous transaction.
+
+
+                                JOINS
+     1. cross join : Record from the 1st table will be merged with all the record of                                 the 2nd table.
+ 
+             it is nothing but the multiplication of each and every data from table one to the                table two. (cartesion join) [like matrix multiplication].
+
+         syntax : select * from table_name1 cross join table_name2;
+                  eg : select * from employee cross join department;
+
+     2. inner join : it is used to obtain matching record from the tables.
+
+             syntax : select * from table_name1 inner join table_name2 on condition;
+
+                eg: select * from employee e inner join department d on e.deptno=d.deptno;
+
+      3. outer join : it is of 3 types
+                    a. left outer join:
+                                  it is the combo of inner join and unmatched record present in                     the left table.
+           syntax : select * from table_name1 left outer join table_name2 on condition;
+               eg: select * from department  d left outer join employee e on  e.deptno= d.deptno; 
+                    b. right outer join : 
+                                     it is the combo of inner join and unmatched record                              present in the right table.
+
+       syntax  : select * from table_name1 right outer join table_name2 on condition;
+
+                    c. full outer join : it is used to obtain the unmatched record.
+        syntax  : select * from table1 full outer join table2 on t1.column_name=t2.column_name.
+
+
+    4 . Natural join : it is similar to inner join. it provide inner query output if their are                         common column present else it return cross join.
+       syntax : select * from table 1 natural join table2;
+
+
+    5. self join : joining of 2 same table is known as self join . we use this join whenever                    the data has to be selected within the same table but it should present in             different tables.
+    syntax : select * from table t1 join table t2 on condition;
+    
