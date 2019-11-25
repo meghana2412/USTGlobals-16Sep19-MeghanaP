@@ -1,0 +1,9 @@
+package com.ustglobals.contactinfo.dto;
+
+public class ContactsBean {
+
+	public void showAllConatct()
+	{
+		
+	}
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="com.ustglobals.contactinfo.dao.ShowAllContact"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="com.ustglobals.contactinfo.dao.ContactDAOimpl"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.ustglobals.contactinfo.dao.ContactInfo"/>
+<fullyQualifiedTypeName name="com.ustglobals.contactinfo.util.ContactManager"/>
+<fullyQualifiedTypeName name="com.ustglobals.contactinfo.dto.ContactsBean"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+</qualifiedTypeNameHistroy>

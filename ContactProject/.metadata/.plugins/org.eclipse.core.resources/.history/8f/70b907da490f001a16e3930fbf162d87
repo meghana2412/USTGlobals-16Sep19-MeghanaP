@@ -1,0 +1,8 @@
+package com.ustglobals.contactinfo.dao;
+
+import java.util.List;
+
+public interface ContactDAOimpl {
+
+	public List<ContactBean> showAllContactInfo()
+}

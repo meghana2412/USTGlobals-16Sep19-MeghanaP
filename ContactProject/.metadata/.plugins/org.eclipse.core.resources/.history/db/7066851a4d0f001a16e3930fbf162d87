@@ -1,0 +1,54 @@
+package com.ustglobals.contactinfo.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.List;
+
+import com.ustglobals.contactinfo.dto.ContactsBean;
+
+public class ContactDAOimpl {
+
+	public List<ContactsBean> showAllContactData()
+	{
+		String url = "jdbc/mysql://localhost:3306/ContactFile?user=root&password=root";
+		String sql= "select * from Contact";
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+	}
+	try 
+	{
+		Class.forName("com.mysql.jdbc.Driver");
+
+		conn = DriverManager.getConnection(url);
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+	}
+	catch( Exception e)
+	{
+		e.printStackTrace();
+	}
+	
+		finally
+		{
+			try
+			{
+				if(conn!=null)
+				{
+					conn.close();
+				}
+				if(stmt!=null)
+				{
+					stmt.close();
+				}
+				if(rs!=null)
+				{
+					rs.close();
+				}
+			}
+	}
+}
+
