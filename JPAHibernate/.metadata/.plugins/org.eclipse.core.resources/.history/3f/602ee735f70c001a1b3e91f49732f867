@@ -1,0 +1,5 @@
+package com.ustglobals.jpawithhibernet.manytoone;
+
+public class Pencil {
+
+}

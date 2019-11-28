@@ -1,0 +1,37 @@
+package com.ustglobals.jpawithhibernet.manytoone;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="pencil")
+public class Pencil {
+
+	@Column
+	private int pid;
+	
+	@Column
+	private String color;
+	
+	
+	private PencilBox pencilBox;
+
+	public int getPid() {
+		return pid;
+	}
+
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	
+}

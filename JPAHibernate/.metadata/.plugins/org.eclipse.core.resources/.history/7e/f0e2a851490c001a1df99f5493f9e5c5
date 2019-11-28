@@ -1,0 +1,23 @@
+package com.ustglobals.jpawithhibernetapp.jpql;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+public class UpdateRecord {
+
+	public static void main(String[] args) {
+		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("TestPersistence");
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		String jpql = "update Product set pname='Bathrobe' where pname = 'Towel'";
+		Query query = entityManager.createQuery(jpql);
+		int result = query.executeUpdate();
+		
+		System.out.println("rows updated successfully : "+result);
+		entityManager.close();
+	}
+}

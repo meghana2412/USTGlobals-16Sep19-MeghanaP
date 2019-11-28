@@ -1,0 +1,5 @@
+package com.ustglobals.jpawithhibernetapp.onetoone;
+
+public class Person {
+
+}

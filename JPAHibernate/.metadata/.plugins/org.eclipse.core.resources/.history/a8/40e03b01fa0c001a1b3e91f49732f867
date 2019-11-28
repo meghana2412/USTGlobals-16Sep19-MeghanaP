@@ -1,0 +1,49 @@
+package com.ustglobals.jpawithhibernetapp.manytoone;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.ustglobals.jpawithhibernetapp.onetoone.Person;
+
+@Entity
+@Table(name="pencilBox")
+public class PencilBox {
+
+	@Column
+	private int bid;
+	
+	@Column
+	private String bname;
+	
+	@ManyToOne
+	private Pencil pencil;
+
+	public int getBid() {
+		return bid;
+	}
+
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+
+	public String getBname() {
+		return bname;
+	}
+
+	public void setBname(String bname) {
+		this.bname = bname;
+	}
+
+	public Pencil getPerson() {
+		return pencil;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	
+	
+}

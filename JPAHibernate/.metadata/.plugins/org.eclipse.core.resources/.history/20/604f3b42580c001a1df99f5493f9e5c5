@@ -1,0 +1,27 @@
+package com.ustglobals.jpawithhibernetapp.onetoone;
+
+import javax.persistence.OneToOne;
+
+public class Person {
+
+	private int pid;
+	
+	private String pname;
+	
+	@OneToOne
+	private VoterCard voterCard;
+	
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+	public String getPname() {
+		return pname;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+	
+}

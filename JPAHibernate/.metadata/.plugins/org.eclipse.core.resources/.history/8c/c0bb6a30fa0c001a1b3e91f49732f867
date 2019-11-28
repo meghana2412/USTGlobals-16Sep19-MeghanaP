@@ -1,0 +1,54 @@
+package com.ustglobals.jpawithhibernetapp.manytoone;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import com.ustglobals.jpawithhibernetapp.onetoone.Person;
+import com.ustglobals.jpawithhibernetapp.onetoone.VoterCard;
+
+public class TestMantyToOne {
+
+	public static void main(String[] args) {
+		PencilBox pc = new PencilBox();
+		pc.setBid(10);
+		pc.setBname("Nataraja");
+		
+		Pencil p = new Pencil();
+		p.setPid(1);
+		p.setColor("brown");
+		p.setPencilBox(pc);
+		
+		Pencil p1= new Pencil();
+		p1.setPid(2);
+		p1.setColor("Red");
+		p1.setPencilBox(pc);
+
+		
+		
+		EntityManager entityManager = null;
+		EntityTransaction entityTransaction=null;
+		try {
+			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("TestPersistence");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			//VoterCard vCard=entityManager.find(VoterCard.class, 10);
+			//System.out.println("person id is : "+vCard.getPerson().getPid());
+			entityManager.persist(p);
+			entityManager.persist(p1);
+			System.out.println("data inserted successfully");
+
+			entityTransaction.commit();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			entityTransaction.rollback();
+		}
+		entityManager.close();
+
+
+	}
+}

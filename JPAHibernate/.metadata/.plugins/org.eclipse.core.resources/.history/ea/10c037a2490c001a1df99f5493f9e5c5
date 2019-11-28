@@ -1,0 +1,5 @@
+package com.ustglobals.jpawithhibernetapp.jpql;
+
+public class DeleteRecord {
+
+}

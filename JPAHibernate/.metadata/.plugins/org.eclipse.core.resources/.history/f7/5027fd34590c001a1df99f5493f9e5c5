@@ -1,0 +1,15 @@
+package com.ustglobals.jpawithhibernetapp.onetoone;
+
+import javax.persistence.OneToOne;
+
+public class Person {
+
+	private int pid;
+	
+	private String pname;
+	
+	@OneToOne
+	private VoterCard voterCard;
+	
+		
+}

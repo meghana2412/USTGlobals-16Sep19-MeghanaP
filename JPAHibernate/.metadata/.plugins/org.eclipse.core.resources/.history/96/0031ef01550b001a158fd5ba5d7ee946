@@ -1,0 +1,5 @@
+package com.ustglobals.jpacurd.dto;
+
+public class JdbcAllData {
+
+}
