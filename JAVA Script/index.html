@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript</title>
+    <script>
+        var age = 22;
+        console.log('Age ='+age);
+        var name = 'Pavan';
+        console.log('Name ='+name);
+        var hasHobbies = true;
+        console.log('Has Hobbies ='+hasHobbies);
+        var data =null;
+        console.log('Data ='+null);
+        var married;
+        console.log('Married ='+married);
+    </script>
+    <script scr='data.js'>
+    </script>
+</head>
+<body>
+    <script>
+        var fruits =['orange','mango','apple','pineapple'];
+        console.log('fruits=',fruits);
+        console.log('fruits =',fruits[0]);
+        console.log('fruitslength =',fruits.length);
+
+         var person ={
+                       firstname :'alia bhatt',
+                       lastname : 'ranbir',
+                       age :26,
+                       phno :62736292729,
+                       getFullName : function(){
+                             return this.firstname + '' + this.lastnames
+                       }
+         }
+         var lastname = person.lastname
+         console.log('Last name',lastname);
+         var age =person.age;
+         console.log('age', age);
+         var FullName = person.getFullName();
+         console.log('FullName',FullName);
+         console.log('==============strictly equals and not euqals=========================');
+         var a = 10;
+         var str = '10';
+         if(a!==str){
+             console.log('Equals');
+            
+         }else{
+             console.log('Not equals');
+         }
+         console.log('==========================');
+         var numbervalue = 20;
+         console.log(typeof numbervalue);
+         var fname = 'bhagath singh';
+         console.log(typeof fname);
+         var lname = null;
+         console.log(typeof lname);
+         var fullname;
+         console.log(typeof fullname);
+
+
+        </script>
+</body>
+</html>
