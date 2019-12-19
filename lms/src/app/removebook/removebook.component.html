@@ -1,0 +1,28 @@
+<div class="alert alert-success" *ngIf='msg'>{{msg}}</div>
+<div class="card card-body md-5 offset-2 col-md-6 mt-5">
+    <div>
+        <h3 style="color: red; text-align: center;">Remove Book</h3>
+    </div>
+    <div>
+        <form #removeBookForm='ngForm' (ngSubmit)='deleteBook(removeBookForm)'>
+            <div class="form-group">
+                <input type="number" name="bookId" id="bookId" min="0" pattern="(?=.+\d).{2,}" pattern="(?=.+\d).{2,}"
+                    class="form-control mb-3 mt-4" placeholder="Enter Book Id to Remove" #bookId='ngModel' ngModel
+                    required>
+                <div *ngIf="bookId.touched && bookId.invalid">
+                    <p *ngIf="bookId.errors.required" class="alert alert-danger">*This field is required</p>
+                    <p *ngIf="bookId.errors.pattern" class="alert alert-danger">*Book ID should be minimum 2 digits</p>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class=" btn btn-outline-danger float-right"
+                    [disabled]='removeBookForm.invalid'>Remove</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-success float-left" routerLink="/librarian">
+                    Go Back
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

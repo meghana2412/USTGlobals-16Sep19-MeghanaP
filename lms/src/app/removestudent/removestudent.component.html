@@ -1,0 +1,28 @@
+<div class="alert alert-success" *ngIf='msg'>{{msg}}</div>
+<div class="card card-body md-5 offset-2 col-md-6 mt-5">
+    <div>
+        <h3 style="color: crimson; text-align: center;">Remove Student</h3>
+    </div>
+    <div>
+        <form action="" #removeStudentForm='ngForm' (ngSubmit)='deleteStudent(removeStudentForm)'>
+            <div class="form-group">
+                <input type="number" name="userID" id="userID" min="0" class="form-control mb-3 mt-4"
+                    placeholder="Enter Student Id to Remove" pattern="(?=.+\d).{2,}" #userID='ngModel' ngModel required>
+                <div *ngIf="userID.touched && userID.invalid">
+                    <p *ngIf="userID.errors.required" class="alert alert-danger">*This field is required</p>
+                    <p *ngIf="userID.errors.pattern" class="alert alert-danger">*Student ID should have minimum 2 digits
+                    </p>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class=" btn btn-outline-danger float-right"
+                    [disabled]='removeStudentForm.invalid'>Remove</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-success float-left" routerLink="/admin">
+                    Go Back
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

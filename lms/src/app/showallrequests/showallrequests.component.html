@@ -1,0 +1,32 @@
+
+
+<body>
+    <div class="container mt-4">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-primary thead-dark">
+                <tr>
+                    <th>Index</th>
+                    <th>Registration Id</th>
+                    <th>Book Id</th>
+                    <th>Student Id</th>
+                    <th>Registration Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let res of requests; index as i'>
+                    <td>{{i+1}}</td>
+                    <td>{{res.regestrationId}}</td>
+                    <td>{{res.bookId}}</td>
+                    <td>{{res.userID}}</td>
+                    <td>{{res.regestrationDate.dayOfMonth+" "+res.regestrationDate.month+" "+res.regestrationDate.year}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <button type="button" class="btn btn-dark float-right" routerLink="/librarian">
+                Go Back
+            </button>
+        </div>
+    </div>
+</body>
+

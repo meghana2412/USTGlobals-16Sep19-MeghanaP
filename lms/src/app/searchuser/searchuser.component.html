@@ -1,0 +1,52 @@
+<div class="card card-body md-5 offset-3 col-md-6 mt-4">
+    <div>
+        <h3 style="color:black; text-align: center;">Search User</h3>
+    </div>
+    <div>
+        <form #searchForm='ngForm' (ngSubmit)='searchUser(searchForm)'>
+            <div class="form-group">
+                <input type="number" name="userID" id="userID" class="form-control mb-3 mt-4"
+                    placeholder="Enter User Id to Search"  #userID='ngModel' ngModel required>
+                <div *ngIf="userID.touched && userID.invalid">
+                    <p *ngIf="userID.errors.required" class="alert alert-danger">*This field is required</p>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class=" btn btn-outline-dark float-right"
+                    [disabled]='searchForm.invalid'>Search</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-dark float-left" routerLink="/admin">
+                    Go Back
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container mt-4">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-primary thead-dark">
+            <tr>
+                <th>Index</th>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>User Type</th>
+                <th>User Email</th>
+                <th>User Password</th>
+                <th>User PhoneNo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let res of users; index as i'>
+                <td>{{i+1}}</td>
+                <td>{{res.userID}}</td>
+                <td>{{res.userName}}</td>
+                <td>{{res.userType}}</td>
+                <td>{{res.userEmail}}</td>
+                <td>{{res.userPassword}}</td>
+                <td>{{res.userPhnoo}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

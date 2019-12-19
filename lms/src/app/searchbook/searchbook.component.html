@@ -1,0 +1,46 @@
+<div class="card card-body md-5 offset-3 col-md-6 mt-4">
+    <div>
+        <h3 style="color:black; text-align: center;">Search Book ByName</h3>
+    </div>
+    <div>
+        <form #searchbookForm='ngForm' (ngSubmit)='searchBook(searchbookForm)'>
+            <div class="form-group">
+                <input type="text" name="bookTitle" id="bookTitle" class="form-control mb-3 mt-4"
+                    placeholder="Enter Book Name to Search" #bookTitle='ngModel' ngModel required>
+                <div *ngIf="bookTitle.touched && bookTitle.invalid">
+                    <p *ngIf="bookTitle.errors.required" class="alert alert-danger">*This field is required</p>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class=" btn btn-outline-dark float-right"
+                    [disabled]='searchbookForm.invalid'>Search</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-dark float-left" routerLink="/librarian">
+                    Go Back
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container mt-4">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-primary thead-dark">
+            <tr>
+                <th>Index</th>
+                <th>Book ID</th>
+                <th>Book Title</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let res of books; index as i'>
+                <td>{{i+1}}</td>
+                <td>{{res.bookId}}</td>
+                <td>{{res.bookTitle}}</td>
+                <td>{{res.author}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

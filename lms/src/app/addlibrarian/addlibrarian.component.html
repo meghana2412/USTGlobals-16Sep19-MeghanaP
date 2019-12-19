@@ -1,0 +1,66 @@
+<div class="alert alert-success" *ngIf='msg'>{{msg}}</div>
+<div class=" card card-body col-md-4 offset-4" style="align-content: center;">
+    <h2 class="text-center" style="color: black;">Regester Librarian Here</h2>
+    <form #addLibrarianForm='ngForm' (ngSubmit)='addLibrarian(addLibrarianForm)'>
+        <div class="form-group">
+            <input type="number" name="userID" min="0" pattern="(?=.+\d).{2,}" id="userID" #userID='ngModel' ngModel
+                class="form-control mb-3" placeholder="Enter Id">
+            <div *ngIf="userID.touched && userID.invalid">
+                <p *ngIf="userID.errors.required" class="alert alert-danger">*This field is required</p>
+                <p *ngIf="userID.errors.pattern" class="alert alert-danger">*LibrarianID should have minimum of 3 digits
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="userName" id="userName" pattern="(?=.*[a-z])(?=.*[A-Z]).{3,}" #userName='ngModel'
+                ngModel class="form-control mb-3" placeholder="Enter Name" required>
+            <div *ngIf="userName.touched && userName.invalid">
+                <p *ngIf="userName.errors.required" class="alert alert-danger">*This field is required</p>
+                <p *ngIf="userName.errors.pattern" class="alert alert-danger">*LibrarianName should have minimum 3
+                    Characters</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="email" name="userEmail" id="userEmail" #userEmail='ngModel' ngModel class="form-control mb-3"
+                placeholder="Enter Email" title="This field contain atleast one . and @" required>
+            <div *ngIf="userEmail.touched && userEmail.invalid">
+                <p *ngIf="userEmail.errors.required" class="alert alert-danger">*This field is required</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" name="userPassword" id="userPassword" #userPassword='ngModel' ngModel
+                class="form-control mb-3" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+                required>
+            <div *ngIf="userPassword.touched && userPassword.invalid">
+                <p *ngIf="userPassword.errors.required" class="alert alert-danger">*This field is required</p>
+                <p *ngIf='userPassword.errors.pattern' class="alert alert-danger">Must contain at least one number and
+                    one uppercase and lowercase letter, and at least 5 or more characters</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="number" name="userPhno" id="userPhno" #userPhno='ngModel' ngModel
+                class="form-control mb-3" placeholder="Enter PhoneNo" pattern="(?=.+\d).{10,}" min="0" max="9" required>
+            <div *ngIf="userPhno.touched && userPhno.invalid">
+                <p *ngIf="userPhno.errors.required" class="alert alert-danger">*This field is required</p>
+                <p *ngIf="userPhno.errors.pattern" class="alert alert-danger">*Mobile No should be 10 digits</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="userType" id="userType"  #userType='ngModel'
+                ngModel class="form-control mb-3" placeholder="Enter userType" required>
+            <div *ngIf="userType.touched && userType.invalid">
+                <p *ngIf="userType.errors.required" class="alert alert-danger">*This field is required</p>
+            </div>
+        </div>
+        
+
+        <button type="submit" class="btn btn-dark float-right" [disabled]='addLibrarianForm.invalid'>Add
+            Librarian</button>
+        <div>
+            <button type="button" class="btn btn-dark float-left" routerLink="/admin">
+                Go Back
+            </button>
+        </div>
+    </form>
+</div>

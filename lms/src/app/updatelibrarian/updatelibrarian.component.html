@@ -1,0 +1,59 @@
+<div class="alert alert-success" *ngIf='msg'>{{msg}}</div>
+<div class=" card card-body col-md-4 offset-4 mt-5" style="align-content: center;">
+    <h2 class="text-center" style="color:black;">Update Librarian</h2>
+    <form #updateLibrarianForm='ngForm' (ngSubmit)='update_librarian(updateLibrarianForm)'>
+        <div class="form-group">
+            <input type="number" name="userID"  id="userID" #userID='ngModel' ngModel
+                class="form-control mb-3" placeholder="Enter Id">
+            <div *ngIf="userID.touched && userID.invalid">
+                <p *ngIf="userID.errors.required" class="alert alert-danger">*This field is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="userName" id="userName" pattern="(?=.*[a-z])(?=.*[A-Z]).{3,}" #userName='ngModel'
+                ngModel class="form-control mb-3" placeholder="Enter Name" required>
+            <div *ngIf="userName.touched && userName.invalid">
+                <p *ngIf="userName.errors.required" class="alert alert-danger">*This field is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="email" name="userEmail" id="userEmail" #userEmail='ngModel' ngModel class="form-control mb-3"
+                placeholder="Enter Email" title="This field contain atleast one . and @" required>
+            <div *ngIf="userEmail.touched && userEmail.invalid">
+                <p *ngIf="userEmail.errors.required" class="alert alert-danger">*This field is required</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" name="userPassword" id="userPassword" #userPassword='ngModel' ngModel
+                class="form-control mb-3" placeholder="Enter Password"  required>
+            <div *ngIf="userPassword.touched && userPassword.invalid">
+                <p *ngIf="userPassword.errors.required" class="alert alert-danger">*This field is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="number" name="userPhno" id="userPhno" #userPhno='ngModel' ngModel
+                class="form-control mb-3" placeholder="Enter PhoneNo" required>
+            <div *ngIf="userPhno.touched && userPhno.invalid">
+                <p *ngIf="userPhno.errors.required" class="alert alert-danger">*This field is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="userType" id="userType"  #userType='ngModel'
+                ngModel class="form-control mb-3" placeholder="Enter userType" required>
+            <div *ngIf="userType.touched && userType.invalid">
+                <p *ngIf="userType.errors.required" class="alert alert-danger">*This field is required</p>
+            </div>
+        </div>
+        
+
+
+        <button type="submit" class="btn btn-dark float-right" [disabled]='addLibrarianForm.invalid'>update
+            Librarian</button>
+        <div>
+            <button type="button" class="btn btn-dark float-left" routerLink="/admin">
+                Go Back
+            </button>
+        </div>
+    </form>
+</div>

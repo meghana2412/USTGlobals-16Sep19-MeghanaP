@@ -1,0 +1,39 @@
+<div class="alert alert-success" *ngIf='msg'>{{msg}}</div>
+<div class="card card-body md-5 offset-2 col-md-6 mt-5">
+    <div>
+        <h3 style="color:black; text-align: center;">Issue Book</h3>
+    </div>
+    <div>
+        <form action="" #issueBookForm='ngForm' (ngSubmit)='issueBook(issueBookForm)'>
+            <div class="form-group">
+                <input type="number" name="regestrationId" id="regestrationId" pattern="(?=.+\d).{2,}" min="0"
+                    class="form-control mb-3 mt-4" placeholder="Enter regestration Id..." #regestrationId='ngModel' ngModel required>
+                <div *ngIf="regestrationId.touched && regestrationId.invalid">
+                    <p *ngIf="regestrationId.errors.required" class="alert alert-danger">*This field is required</p>
+                    <p *ngIf="regestrationId.errors.pattern" class="alert alert-danger">*RegestrationID should have minimum of
+                        2 digits
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="number" name="bookId" id="bookId" min="0" pattern="(?=.+\d).{2,}"
+                    class="form-control mb-3 mt-4" placeholder="Enter Book Id..." #bookId='ngModel' ngModel required>
+                <div *ngIf="bookId.touched && bookId.invalid">
+                    <p *ngIf="bookId.errors.required" class="alert alert-danger">*This field is required</p>
+                    <p *ngIf="bookId.errors.pattern" class="alert alert-danger">*BookID should have minimum of 2 digits
+
+                </div>
+            </div>
+
+
+            <div>
+                <button type="submit" class=" btn btn-outline-dark float-right"
+                    [disabled]='issueBookForm.invalid'>Issue</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-dark float-left" routerLink="/librarian">
+                    Go Back
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
