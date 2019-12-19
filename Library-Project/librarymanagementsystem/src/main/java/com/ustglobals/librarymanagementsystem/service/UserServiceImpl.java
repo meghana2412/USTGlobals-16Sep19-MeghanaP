@@ -1,0 +1,24 @@
+package com.ustglobals.librarymanagementsystem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ustglobals.librarymanagementsystem.dao.UserDAO;
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	 private UserDAO dao;
+	
+	@Override
+	public UserBean userLogin(int userID, String userPassword) {
+		return dao.userLogin(userID, userPassword);
+	}
+
+	@Override
+	public boolean regesterUser(UserBean bean) {
+		return dao.regesterUser(bean);
+	}
+}

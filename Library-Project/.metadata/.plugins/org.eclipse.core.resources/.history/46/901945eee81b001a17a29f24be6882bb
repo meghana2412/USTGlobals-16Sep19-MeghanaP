@@ -1,0 +1,15 @@
+package com.ustglobals.librarymanagementsystem.dao;
+
+import java.util.List;
+
+import com.ustglobals.librarymanagementsystem.dto.BookBean;
+import com.ustglobals.librarymanagementsystem.dto.BookRegestrationBean;
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+
+public interface StudentDAO {
+
+	public UserBean loginStudent(int userID, String userPassword);
+	public BookBean searchBook(String bookTitle);
+	public BookRegestrationBean requestBook( BookBean bean,int userID);
+	public boolean cancelRequest(String registrationId,int userID);
+    public List<BookBean> getAllBooks();}

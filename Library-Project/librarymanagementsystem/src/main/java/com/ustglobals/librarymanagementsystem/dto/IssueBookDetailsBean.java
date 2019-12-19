@@ -1,0 +1,76 @@
+package com.ustglobals.librarymanagementsystem.dto;
+
+import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+@Table(name="issue_book_datails")
+public class IssueBookDetailsBean {
+
+	@Id
+	@Column
+	@GeneratedValue
+	private int issueId;
+
+	@Column
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate issueDate;
+	@Column
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate returnDate;
+
+
+
+	public BookRegestrationBean getRegesterBean() {
+		return regesterBean;
+	}
+	public void setRegesterBean(BookRegestrationBean regesterBean) {
+		this.regesterBean = regesterBean;
+	}
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="bookId" , nullable = false)
+	private BookBean bookBean;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="regestrationId", nullable = false)
+	private BookRegestrationBean regesterBean;
+
+	public BookBean getBookBean() {
+		return bookBean;
+	}
+	public void setBookBean(BookBean bookBean) {
+		this.bookBean = bookBean;
+	}
+	public int getIssueId() {
+		return issueId;
+	}
+	public void setIssueId(int issueId) {
+		this.issueId = issueId;
+	}
+
+
+	public LocalDate getIssueDate() {
+		return issueDate;
+	}
+	public void setIssueDate(LocalDate issueDate) {
+		this.issueDate = issueDate;
+	}
+	public LocalDate getReturnDate() {
+		return returnDate;
+	}
+	public void setReturnDate(LocalDate returnDate) {
+		this.returnDate = returnDate;
+	}
+
+
+}

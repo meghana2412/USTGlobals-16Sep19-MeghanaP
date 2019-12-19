@@ -1,0 +1,14 @@
+package com.ustglobals.librarymanagementsystem.service;
+
+import java.util.List;
+
+import com.ustglobals.librarymanagementsystem.dto.BookBean;
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+
+public interface StudentService {
+
+	public UserBean loginStudent(int userID, String password);
+	public BookBean searchBook(String bookTitle);
+	public BookBean requestBook( int bId,int usn);
+	public List<BookBean> getAllBooks();
+}

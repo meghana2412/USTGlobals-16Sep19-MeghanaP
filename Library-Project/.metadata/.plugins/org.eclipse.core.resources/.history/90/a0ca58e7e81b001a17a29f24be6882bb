@@ -1,0 +1,124 @@
+package com.ustglobals.librarymanagementsystem.dao;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import com.ustglobals.librarymanagementsystem.dto.BookBean;
+import com.ustglobals.librarymanagementsystem.dto.BookRegestrationBean;
+import com.ustglobals.librarymanagementsystem.dto.StudentBean;
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+
+@Repository
+public class StudentDaoImpl implements StudentDAO{
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+
+	@Override
+	public BookBean searchBook(String bookTitle) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		return manager.find(BookBean.class, bookTitle);
+	}
+
+	@Override
+	public BookRegestrationBean requestBook( BookBean bean,int userID) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction=manager.getTransaction();
+		transaction.begin();
+
+		String viewBookDetails="from BookBean where bookId =: bookId";
+		Query query=manager.createQuery(viewBookDetails);
+		query.setParameter("bookId", bean.getbookId());
+
+		BookBean book=(BookBean) query.getSingleResult();
+
+		String select="from BookRegestrationBean where bookId=:bookId";
+		Query query1=manager.createQuery(select);
+
+		query1.setParameter("bookId", book.getbookId());
+		BookRegestrationBean reg=null;
+		BookRegestrationBean bookPresent=null;
+		try {
+			bookPresent=(BookRegestrationBean)query1.getSingleResult();
+			System.out.println("Book is not available");
+
+		}catch(Exception e) {
+			reg = new BookRegestrationBean();
+			reg.setBookId(book.getbookId());
+			Date date = new Date();
+			reg.setRegestrationDate(date);
+			Random random = new Random();
+			int regestrationId = random.nextInt(500);
+			reg.setRegestrationId(regestrationId);
+			reg.setUserID(userID);
+			manager.persist(reg);
+			transaction.commit();
+		}
+		return reg;
+		}
+
+	@Override
+	public List<BookBean> getAllBooks() {
+		String jpql ="from BookBean";
+		EntityManager manager =factory.createEntityManager();
+		TypedQuery<BookBean> query=manager.createQuery(jpql,BookBean.class);
+		List<BookBean> BookBean = query.getResultList();
+		return BookBean;
+	}
+
+	@Override
+	public UserBean loginStudent(int userID, String userPassword) {
+		String jpql ="from UserBean where userID=:userID and userPassword=:userPassword";
+		EntityManager manager = factory.createEntityManager();
+		Query query = manager.createQuery(jpql);
+		query.setParameter("userID", userID);
+		query.setParameter("userPassword", userPassword);
+
+		try {
+			UserBean bean = (UserBean)query.getSingleResult();
+			return bean;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
+
+		}	
+	}
+
+	@Override
+	public boolean cancelRequest(String regestrationId, int userID) {
+		EntityManager manager=factory.createEntityManager();
+		EntityTransaction transaction=manager.getTransaction();
+		transaction.begin();
+		String select="from BookRegestrationBean where regestrationId=:regestrationId and userID=:userID";
+		Query query=manager.createQuery(select);
+
+		query.setParameter("regestrationId", regestrationId);
+		query.setParameter("userId", userID);
+		BookRegestrationBean book=null;
+		try {
+			book=(BookRegestrationBean)query.getSingleResult();
+			manager.remove(book);
+			transaction.commit();
+
+		}catch(Exception e) {
+			transaction.rollback();
+			return false;
+		}
+		manager.close();
+		return true;	
+		}
+
+}

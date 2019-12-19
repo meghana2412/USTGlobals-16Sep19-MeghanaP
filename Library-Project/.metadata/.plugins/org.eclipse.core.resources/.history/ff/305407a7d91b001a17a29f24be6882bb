@@ -1,0 +1,5 @@
+package com.ustglobals.librarymanagementsystem.dto;
+
+public class IssueBookDetailsBean {
+
+}

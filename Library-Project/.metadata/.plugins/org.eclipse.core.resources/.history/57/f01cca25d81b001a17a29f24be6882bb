@@ -1,0 +1,81 @@
+package com.ustglobals.librarymanagementsystem.dto;
+
+import java.util.Date;
+
+//import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+@Table(name="Issued_Book_Details")
+public class IssuedBookdetail {
+
+	@Id
+	@Column
+	
+	private int iId;
+	
+	@Column
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private Date dateOfIssuing;
+	
+	@Column
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private Date dateOfReturning;
+	
+	/*
+	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name="id", nullable=false) private StudentBean studentBean;
+	 */
+	
+	/*
+	 * public StudentBean getStudentBean() { return studentBean; }
+	 * 
+	 * public void setStudentBean(StudentBean studentBean) { this.studentBean =
+	 * studentBean; }
+	 * 
+	 * public BookBean getBookBean() { return bookBean; }
+	 * 
+	 * public void setBookBean(BookBean bookBean) { this.bookBean = bookBean; }
+	 */
+
+	/*
+	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name="bid", nullable=false) private BookBean bookBean;
+	 */
+
+	public int getiId() {
+		return iId;
+	}
+
+	public void setiId(int iId) {
+		this.iId = iId;
+	}
+
+	public Date getDateOfIssuing() {
+		return dateOfIssuing;
+	}
+
+	public void setDateOfIssuing(Date dateOfIssuing) {
+		this.dateOfIssuing = dateOfIssuing;
+	}
+
+	public Date getDateOfReturning() {
+		return dateOfReturning;
+	}
+
+	public void setDateOfReturning(Date dateOfReturning) {
+		this.dateOfReturning = dateOfReturning;
+	}
+	
+	
+}

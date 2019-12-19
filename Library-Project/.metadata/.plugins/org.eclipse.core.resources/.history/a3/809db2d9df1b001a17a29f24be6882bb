@@ -1,0 +1,18 @@
+package com.ustglobals.librarymanagementsystem.service;
+
+import java.util.List;
+
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+
+public interface AdminService {
+
+	public boolean addLibrarian(UserBean bean) ;
+	public boolean addStudent(UserBean bean) ;
+	public boolean regesterAdmin(UserBean bean);
+	public UserBean adminLogin(int userId, String userPassword);
+	public boolean updateLibrarian(UserBean bean); 
+	public boolean updateStudent(UserBean bean); 
+	public boolean deleteLibrarian(int userId); 
+	public List<UserBean> showAllUsers(); 	
+	public UserBean searchUser(int userId) ;
+}

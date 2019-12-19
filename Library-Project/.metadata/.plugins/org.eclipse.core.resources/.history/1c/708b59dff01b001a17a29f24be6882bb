@@ -1,0 +1,46 @@
+//package com.ustglobals.librarymanagementsystem.service;
+//
+//import java.util.List;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
+//import com.ustglobals.librarymanagementsystem.dao.StudentDAO;
+//import com.ustglobals.librarymanagementsystem.dto.BookBean;
+//import com.ustglobals.librarymanagementsystem.dto.BookRegestrationBean;
+//import com.ustglobals.librarymanagementsystem.dto.UserBean;
+//
+//@Service
+//public class StudentServiceImpl implements StudentService{
+//
+//	@Autowired
+//	private StudentDAO dao;
+//
+//	@Override
+//	public UserBean loginStudent(int userID, String userPassword) {
+//		return dao.loginStudent(userID, userPassword);
+//	}
+//
+//	@Override
+//	public BookBean searchBook(String bookTitle) {
+//		return dao.searchBook(bookTitle);
+//	}
+//
+//	@Override
+//	public BookRegestrationBean requestBook(BookBean bean, int userID) {
+//		return dao.requestBook(bean, userID);
+//	}
+//
+//	@Override
+//	public boolean cancelRequest(String regestrationId, int userID) {
+//		return dao.cancelRequest(regestrationId, userID);
+//	}
+//
+//	@Override
+//	public List<BookBean> getAllBooks() {
+//		return dao.getAllBooks();
+//	}
+//	
+//	
+//
+//}

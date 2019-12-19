@@ -1,0 +1,50 @@
+package com.ustglobals.librarymanagementsystem.dto;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="issue_book_datails")
+public class IssueBookDetailsBean {
+
+	@Id
+	@Column
+	private int issueId;
+	@Column
+	private int regestrationId;
+	@Column
+	private Date issueDate;
+	@Column
+	private Date returnDate;
+	
+	public int getIssueId() {
+		return issueId;
+	}
+	public void setIssueId(int issueId) {
+		this.issueId = issueId;
+	}
+	public int getRegestrationId() {
+		return regestrationId;
+	}
+	public void setRegestrationId(int regestrationId) {
+		this.regestrationId = regestrationId;
+	}
+	public Date getIssueDate() {
+		return issueDate;
+	}
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
+	}
+	public Date getReturnDate() {
+		return returnDate;
+	}
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
+	}
+	
+	
+}

@@ -1,0 +1,41 @@
+package com.ustglobals.librarymanagementsystem.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="book")
+public class BookBean {
+
+	@Id
+	@Column	
+	private int bookId;
+	@Column
+	private String bookTitle;
+	@Column
+	private String author;
+	
+	public int getbookId() {
+		return bookId;
+	}
+	public void setbookId(int bookId) {
+		this.bookId = bookId;
+	}
+	public String getbookTitle() {
+		return bookTitle;
+	}
+	public void setbookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
+	
+}

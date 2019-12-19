@@ -1,0 +1,86 @@
+package com.ustglobals.librarymanagementsystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ustglobals.librarymanagementsystem.dto.LibraryResponse;
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+import com.ustglobals.librarymanagementsystem.service.AdminService;
+@CrossOrigin
+@RestController
+public class AdminController {
+
+	@Autowired
+	private AdminService service;
+
+	@PostMapping(path ="/add-student",consumes =MediaType.APPLICATION_JSON_VALUE,
+							  produces =MediaType.APPLICATION_JSON_VALUE)
+	public  LibraryResponse addStudent(@RequestBody UserBean bean)
+	{
+		LibraryResponse response = new LibraryResponse();
+		if(service.addStudent(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("Student registered to library");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Student  not registered to the library");
+		}
+		return response;
+	}
+
+	@GetMapping(path="/login",produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse adminLOgin(@RequestParam("userID") int userID,
+			@RequestParam("userPassword") String userPassword)
+	{
+
+		LibraryResponse response = new LibraryResponse();
+		UserBean bean = service.adminLogin(userID, userPassword);
+		if(bean!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" admin logined successfull");
+		}
+		else
+		{
+
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" admin login failed");
+
+		}
+		return response;
+	}
+
+	@PostMapping(path ="/add-librarian",consumes =MediaType.APPLICATION_JSON_VALUE,
+			produces =MediaType.APPLICATION_JSON_VALUE)
+	public  LibraryResponse addLibrarian(@RequestBody UserBean bean)
+	{
+		LibraryResponse response = new LibraryResponse();
+		if(service.addLibrarian(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("Librarian added to the DB");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Librarian  not added to the DB");
+		}
+		return response;
+	}
+	
+}

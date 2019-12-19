@@ -1,0 +1,53 @@
+package com.ustglobals.librarymanagementsystem.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import com.ustglobals.librarymanagementsystem.dto.BookBean;
+import com.ustglobals.librarymanagementsystem.dto.IssueBookDetailsBean;
+
+public class LibrarianDaoImpl implements LibrarianDAO{
+
+	@Override
+	public boolean addBooks(BookBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateBooks(BookBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteBooks(int bookId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<IssueBookDetailsBean> showAllIssuedBooks(int userID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<IssueBookDetailsBean> showAllIssuedBooks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IssueBookDetailsBean acceptRequest(int regestrationId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IssueBookDetailsBean returnBook(int regestrationId, Date returnDate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

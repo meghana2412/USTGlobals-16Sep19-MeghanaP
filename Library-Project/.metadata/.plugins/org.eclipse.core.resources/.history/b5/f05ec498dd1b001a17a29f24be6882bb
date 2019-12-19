@@ -1,0 +1,58 @@
+package com.ustglobals.librarymanagementsystem.service;
+
+import java.util.List;
+
+import com.ustglobals.librarymanagementsystem.dao.AdminDAO;
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+
+public class AdminServiceImpl implements AdminService{
+	
+	private AdminDAO dao;
+
+	@Override
+	public boolean addLibrarian(UserBean bean) {
+		return dao.addLibrarian(bean);
+	}
+
+	@Override
+	public boolean addStudent(UserBean bean) {
+		return dao.addStudent(bean);
+	}
+
+	@Override
+	public UserBean adminLogin(int userId, String userPassword) {
+		return dao.adminLogin(userId, userPassword);
+	}
+
+	@Override
+	public boolean updateLibrarian(UserBean bean) {
+		return dao.updateLibrarian(bean);
+	}
+
+	@Override
+	public boolean updateStudent(UserBean bean) {
+		return dao.addStudent(bean);
+	}
+
+	@Override
+	public boolean deleteUser(int userId) {
+		return dao.deleteUser(userId);
+	}
+
+	@Override
+	public List<UserBean> showAllUsers() {
+		return dao.showAllUsers();
+	}
+
+	@Override
+	public UserBean searchUser(int userId) {
+		return dao.searchUser(userId);
+	}
+
+	@Override
+	public boolean regesterAdmin(UserBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

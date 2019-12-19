@@ -1,0 +1,21 @@
+package com.ustglobals.librarymanagementsystem.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import com.ustglobals.librarymanagementsystem.dto.BookBean;
+import com.ustglobals.librarymanagementsystem.dto.BookRegestrationBean;
+import com.ustglobals.librarymanagementsystem.dto.IssueBookDetailsBean;
+
+public interface LibrarianDAO {
+
+	public boolean addBooks(BookBean bean);
+	public boolean updateBooks(BookBean books);
+	public boolean deleteBooks(int bookId);
+	
+	public List<IssueBookDetailsBean> showAllIssuedBooks(int userID);
+	public List<IssueBookDetailsBean> showAllIssuedBooks();
+	//public List<BookRegestrationBean> showAllRequests();
+	public IssueBookDetailsBean acceptRequest(int regestrationId);
+	public IssueBookDetailsBean returnBook(int regestrationId, Date returnDate);
+}

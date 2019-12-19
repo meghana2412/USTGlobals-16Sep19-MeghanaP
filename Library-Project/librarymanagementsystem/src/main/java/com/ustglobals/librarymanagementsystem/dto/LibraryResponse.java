@@ -1,0 +1,83 @@
+package com.ustglobals.librarymanagementsystem.dto;
+
+import java.util.List;
+
+public class LibraryResponse {
+
+	private int statusCode;
+	private String message;
+	private String description;
+	private UserBean user;
+	private BookBean book;
+	private BookRegestrationBean regesterBean;
+	
+	
+	public BookRegestrationBean getRegesterBean() {
+		return regesterBean;
+	}
+	public void setRegesterBean(BookRegestrationBean regesterBean) {
+		this.regesterBean = regesterBean;
+	}
+	public BookBean getBook() {
+		return book;
+	}
+	public void setBook(BookBean book) {
+		this.book = book;
+	}
+	public UserBean getUser() {
+		return user;
+	}
+	public void setUser(UserBean user) {
+		this.user = user;
+	}
+	private List<UserBean> userBean;
+	private List<BookBean> bookBean;
+	private List<BookRegestrationBean> bookRegestrationBean;
+	private List<IssueBookDetailsBean> issueBookDetailsBean;
+	
+	
+	public List<BookBean> getBookBean() {
+		return bookBean;
+	}
+	public void setBookBean(List<BookBean> bookBean) {
+		this.bookBean = bookBean;
+	}
+	public List<BookRegestrationBean> getBookRegestrationBean() {
+		return bookRegestrationBean;
+	}
+	public void setBookRegestrationBean(List<BookRegestrationBean> bookRegestrationBean) {
+		this.bookRegestrationBean = bookRegestrationBean;
+	}
+	public List<IssueBookDetailsBean> getIssueBookDetailsBean() {
+		return issueBookDetailsBean;
+	}
+	public void setIssueBookDetailsBean(List<IssueBookDetailsBean> issueBookDetailsBean) {
+		this.issueBookDetailsBean = issueBookDetailsBean;
+	}
+	public List<UserBean> getUserBean() {
+		return userBean;
+	}
+	public void setUserBean(List<UserBean> userBean) {
+		this.userBean = userBean;
+	}
+	public int getStatusCode() {
+		return statusCode;
+	}
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
+}

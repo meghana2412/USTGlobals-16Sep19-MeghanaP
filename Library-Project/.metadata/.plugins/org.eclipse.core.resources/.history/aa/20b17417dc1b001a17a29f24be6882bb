@@ -1,0 +1,91 @@
+package com.ustglobals.librarymanagementsystem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ustglobals.librarymanagementsystem.dao.AdminDAO;
+import com.ustglobals.librarymanagementsystem.dto.AdminBean;
+import com.ustglobals.librarymanagementsystem.dto.LibrarianBean;
+import com.ustglobals.librarymanagementsystem.dto.StudentBean;
+
+@Service
+public class AdminServiceImpl implements AdminDAO{
+
+	@Autowired
+	private AdminDAO dao;
+
+	@Override
+	public com.ustglobals.librarymanagementsystem.dao.AdminBean loginToAdmin(int aId, String aPassword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addStudent(com.ustglobals.librarymanagementsystem.dao.StudentBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addLibrarian(com.ustglobals.librarymanagementsystem.dao.LibrarianBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateStudent(com.ustglobals.librarymanagementsystem.dao.StudentBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateLibrarian(com.ustglobals.librarymanagementsystem.dao.LibrarianBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeStudent(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeLibrarian(int lid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public com.ustglobals.librarymanagementsystem.dao.AdminBean loginToAdmin(int aId, String aPassword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addStudent(com.ustglobals.librarymanagementsystem.dao.StudentBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addLibrarian(com.ustglobals.librarymanagementsystem.dao.LibrarianBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateStudent(com.ustglobals.librarymanagementsystem.dao.StudentBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateLibrarian(com.ustglobals.librarymanagementsystem.dao.LibrarianBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+
+}

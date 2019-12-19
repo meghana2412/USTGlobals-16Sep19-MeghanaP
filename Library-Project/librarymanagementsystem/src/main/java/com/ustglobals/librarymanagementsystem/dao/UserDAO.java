@@ -1,0 +1,11 @@
+package com.ustglobals.librarymanagementsystem.dao;
+
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+
+public interface UserDAO {
+
+	public UserBean userLogin(int userID, String userPassword);
+	public boolean regesterUser(UserBean bean);
+
+
+}

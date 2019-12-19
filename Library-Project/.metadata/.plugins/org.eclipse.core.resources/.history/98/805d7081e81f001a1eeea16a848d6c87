@@ -1,0 +1,188 @@
+package com.ustglobals.librarymanagementsystem.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ustglobals.librarymanagementsystem.dto.BookBean;
+import com.ustglobals.librarymanagementsystem.dto.BookRegestrationBean;
+import com.ustglobals.librarymanagementsystem.dto.IssueBookDetailsBean;
+import com.ustglobals.librarymanagementsystem.dto.LibraryResponse;
+import com.ustglobals.librarymanagementsystem.service.LibrarianService;
+@CrossOrigin(origins = "*",allowedHeaders = "*", allowCredentials = "true")
+@RestController
+public class LibrarianController {
+
+	@Autowired
+	private LibrarianService service;
+	
+	
+	
+	@PostMapping(path="/add-books", consumes =MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse addBooks(@RequestBody BookBean bean) {
+		
+		LibraryResponse response = new LibraryResponse();
+		if(service.addBooks(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" book added to the library");
+		}
+		else
+		{
+
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" your not added the book to the library");
+
+		}
+		return response;
+		
+	}
+	
+	@PutMapping(path="update-books", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse updateBooks( @RequestBody BookBean bean) {
+		LibraryResponse response = new LibraryResponse();
+		if(service.updateBooks(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" book  data updated to the library");
+		}
+		else
+		{
+
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" your not updated  the book  data to the library");
+
+		}
+		return response;
+		
+	}
+	
+	@DeleteMapping(path="delete-books",produces = MediaType.APPLICATION_JSON_VALUE)
+	public boolean deleteBooks( @RequestParam ("bookId")int bookId) {
+		
+		return service.deleteBooks(bookId);
+		
+	}
+	
+	@GetMapping(path="show-allIssued-books", produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse showAllIssuedBooks()
+	{
+		LibraryResponse response =new LibraryResponse();
+		List<IssueBookDetailsBean> issuedBookDetails = service.showAllIssuedBooks();
+		if(!issuedBookDetails.isEmpty())
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" issued book details");
+			response.setIssueBookDetailsBean(issuedBookDetails);
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" No books issued ");
+
+		}
+		return response;
+	}
+	
+	@GetMapping(path="search-book",produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse searchBook() 
+	{
+		LibraryResponse response = new LibraryResponse();
+		List<BookBean> bean =service.searchBook();
+		if(bean!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" here is the book your searching for");
+			response.setBookBean(bean);
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" no match for ur searching");
+		}
+		return response;
+	}
+	
+	@GetMapping(path="/show-allRequest",produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse showAllRequests(){
+		
+		LibraryResponse response = new LibraryResponse();
+		List<BookRegestrationBean> regesterBean = service.showAllRequests();
+		if(regesterBean!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("requested book details");
+			response.setBookRegestrationBean(regesterBean);
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" no data found");
+		}
+		return response;
+	}
+	
+	@GetMapping(path="/accept-request", produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse acceptRequest( @RequestParam("regestrationId")int regestrationId)
+	{
+		
+		LibraryResponse response = new LibraryResponse();
+	    //IssueBookDetailsBean issueBean = new IssueBookDetailsBean();
+		//issueBean.setIssueId(regestrationId);
+		boolean requestBean = service.acceptRequest(regestrationId);
+		if(requestBean!=false)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success ");
+			response.setDescription("your request for the book has been accepted");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" your request for the book is yet not accepted");
+		}
+		return response;
+		
+	}
+	
+	@DeleteMapping(path="/issue-book", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse issueBook( @RequestParam("regestrationId")int regestrationId,@RequestParam("bookId") int bookId)
+	{
+		LibraryResponse response = new LibraryResponse();		
+		if(service.issueBook(regestrationId,bookId))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success ");
+			response.setDescription(" book with bookId "+bookId+" have been issued to regestrationID "+regestrationId);
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" Book not issued yet");
+		}
+		return response;
+		
+		
+	}
+}

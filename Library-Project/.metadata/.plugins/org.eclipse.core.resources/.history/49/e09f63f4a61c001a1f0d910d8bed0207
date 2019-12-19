@@ -1,0 +1,45 @@
+package com.ustglobals.librarymanagementsystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ustglobals.librarymanagementsystem.dto.LibraryResponse;
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+import com.ustglobals.librarymanagementsystem.service.AdminService;
+
+@RestController
+public class StudentController {
+	
+	@Autowired
+	private AdminService service;
+	
+	@GetMapping(path="/student-login",produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse loginStudent(@RequestParam("userID") int userID,
+			@RequestParam("userPassword") String userPassword) {
+		
+		LibraryResponse response = new LibraryResponse();
+		UserBean bean = service.adminLogin(userID, userPassword);
+		if(bean!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" student with id "+userID+" logined successfully");
+		}
+		else
+		{
+
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" admin login failed");
+
+		}
+		return response;
+		
+	}
+	
+	
+
+}

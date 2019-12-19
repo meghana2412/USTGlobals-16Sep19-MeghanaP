@@ -1,0 +1,205 @@
+package com.ustglobals.librarymanagementsystem.controller;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ustglobals.librarymanagementsystem.dto.LibraryResponse;
+import com.ustglobals.librarymanagementsystem.dto.UserBean;
+import com.ustglobals.librarymanagementsystem.service.AdminService;
+@CrossOrigin
+@RestController
+public class AdminController {
+
+	@Autowired
+	private AdminService service;
+
+	@PostMapping(path ="/add-student",consumes =MediaType.APPLICATION_JSON_VALUE,
+			produces =MediaType.APPLICATION_JSON_VALUE)
+	public  LibraryResponse addStudent(@RequestBody UserBean bean)
+	{
+		LibraryResponse response = new LibraryResponse();
+		if(service.addStudent(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("Student registered to library");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Student  not registered to the library");
+		}
+		return response;
+	}
+	
+	@PostMapping(path ="/add-admin",consumes =MediaType.APPLICATION_JSON_VALUE,
+			produces =MediaType.APPLICATION_JSON_VALUE)
+	public  LibraryResponse regesterAdmin(@RequestBody UserBean bean)
+	{
+		LibraryResponse response = new LibraryResponse();
+		if(service.regesterAdmin(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("Admin registered to library");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Admin  not registered to the library");
+		}
+		return response;
+	}
+
+
+	@GetMapping(path="/admin-login",produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse adminLogin(@RequestParam("userID") int userID,
+			@RequestParam("userPassword") String userPassword)
+	{
+
+		LibraryResponse response = new LibraryResponse();
+		UserBean bean = service.adminLogin(userID, userPassword);
+		if(bean!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" admin logined successfull");
+		}
+		else
+		{
+
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription(" admin login failed");
+
+		}
+		return response;
+	}
+
+	@PostMapping(path ="/add-librarian",consumes =MediaType.APPLICATION_JSON_VALUE,
+			produces =MediaType.APPLICATION_JSON_VALUE)
+	public  LibraryResponse addLibrarian(@RequestBody UserBean bean)
+	{
+		LibraryResponse response = new LibraryResponse();
+		if(service.addLibrarian(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("Librarian added to the DB");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("Failure");
+			response.setDescription("Librarian  not added to the DB");
+		}
+		return response;
+	}
+	
+	@PutMapping(path="/update-student", consumes = MediaType.APPLICATION_JSON_VALUE,
+			               produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse updateStudent(@RequestBody UserBean bean)
+	{
+		LibraryResponse response = new LibraryResponse();
+		if(service.updateStudent(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("student data got updated");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("student data not updated");
+		}
+		return response;
+	}
+	
+	@PutMapping(path="/update-librarian", consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse updateLibrarian(@RequestBody UserBean bean)
+	{
+		LibraryResponse response = new LibraryResponse();
+		if(service.updateLibrarian(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("librarian data got updated");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("librarian data not updated");
+		}
+		return response;
+	}
+	
+	@DeleteMapping(path="/delete-user/{userID}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public boolean deleteUser(@PathVariable("userID")int userID)
+	{
+		return service.deleteUser(userID);
+	
+
+	}
+	
+	@GetMapping(path="/get-allUsers",produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse showAllUsers()
+	{
+		LibraryResponse response = new LibraryResponse();
+		List<UserBean> beans = service.showAllUsers();
+		if(!beans.isEmpty())
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("user's found in the register");
+			response.setUserBean(beans);;
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("user's not found in the register");
+		}
+		return response;	
+	}
+	
+	@GetMapping(path="/get-user",produces = MediaType.APPLICATION_JSON_VALUE)
+	public LibraryResponse searchUser(@RequestParam("userID")int userID)
+	{
+
+		LibraryResponse response = new LibraryResponse();
+		UserBean bean = service.searchUser(userID);
+		if(bean!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("user found in the regester");
+			response.setUserBean(Arrays.asList(bean));
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("user not found in the register");
+		}
+		return response;
+	}
+
+
+}
