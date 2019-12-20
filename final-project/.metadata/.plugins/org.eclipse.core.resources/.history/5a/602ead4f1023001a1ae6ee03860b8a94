@@ -1,0 +1,58 @@
+package com.ustglobals.stockmanagement.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ustglobals.stockmanagement.dto.Product;
+import com.ustglobals.stockmanagement.dto.ProductResponse;
+import com.ustglobals.stockmanagement.service.ProductService;
+
+@RestController
+public class ProductController {
+
+	@Autowired
+	private ProductService service;
+	
+	@PostMapping(path="/add-product", consumes = MediaType.APPLICATION_JSON_VALUE,
+										produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponse addProduct(@RequestBody Product bean) {
+		
+		ProductResponse response = new ProductResponse();
+		 service.addProduct(bean);
+		 if(bean!=null) {
+			 response.setStatusCode(201);
+			 response.setMessage("success");
+			 response.setDescription("Product added to the store");
+		 }
+		 else {
+			 response.setStatusCode(401);
+			 response.setMessage("failure");
+			 response.setDescription("Product not added to the store");
+		 }
+		return response;
+	}
+	
+	@PutMapping(path="/modify-product", consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponse modifyProduct(@RequestBody Product bean)
+	{
+		ProductResponse response = new ProductResponse();
+		if(service.modifyProduct(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("product data modified in the store");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("product data not modified in the store");
+		}
+		return response;
+	}
+}

@@ -1,0 +1,11 @@
+package com.ustglobals.stockmanagement.dao;
+
+import com.ustglobals.stockmanagement.dto.Product;
+
+public interface ProductDAO {
+
+	public boolean addProduct(Product bean);
+	public Product searchProductByName(String name);
+	public boolean addTocart();
+	
+}

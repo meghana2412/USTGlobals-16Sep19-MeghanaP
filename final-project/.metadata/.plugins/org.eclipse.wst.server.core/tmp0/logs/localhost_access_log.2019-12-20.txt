@@ -1,0 +1,8 @@
+127.0.0.1 - - [20/Dec/2019:14:01:10 +0530] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [20/Dec/2019:14:04:40 +0530] "POST /stockmanagement/add-product HTTP/1.1" 404 1105
+0:0:0:0:0:0:0:1 - - [20/Dec/2019:14:08:56 +0530] "POST /stockmanagement/add-product HTTP/1.1" 404 1105
+0:0:0:0:0:0:0:1 - - [20/Dec/2019:14:08:59 +0530] "POST /stockmanagement/add-product HTTP/1.1" 404 1105
+0:0:0:0:0:0:0:1 - - [20/Dec/2019:14:09:00 +0530] "POST /stockmanagement/add-product HTTP/1.1" 404 1105
+0:0:0:0:0:0:0:1 - - [20/Dec/2019:14:09:01 +0530] "POST /stockmanagement/add-product HTTP/1.1" 404 1105
+0:0:0:0:0:0:0:1 - - [20/Dec/2019:14:09:01 +0530] "POST /stockmanagement/add-product HTTP/1.1" 404 1105
+0:0:0:0:0:0:0:1 - - [20/Dec/2019:14:09:02 +0530] "POST /stockmanagement/add-product HTTP/1.1" 404 1105

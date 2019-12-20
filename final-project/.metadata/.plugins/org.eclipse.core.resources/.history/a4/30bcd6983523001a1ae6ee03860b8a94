@@ -1,0 +1,155 @@
+package com.ustglobals.stockmanagement.controller;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ustglobals.stockmanagement.dto.Product;
+import com.ustglobals.stockmanagement.dto.ProductResponse;
+import com.ustglobals.stockmanagement.service.ProductService;
+
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
+public class ProductController {
+
+	@Autowired
+	private ProductService service;
+	
+	@PostMapping(path="/add-product", consumes = MediaType.APPLICATION_JSON_VALUE,
+										produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponse addProduct(@RequestBody Product product) {
+		
+		ProductResponse response = new ProductResponse();
+		 
+		 if(service.addProduct(product)) {
+			 response.setStatusCode(201);
+			 response.setMessage("success");
+			 response.setDescription("Product added to the store");
+		 }
+		 else {
+			 response.setStatusCode(401);
+			 response.setMessage("failure");
+			 response.setDescription("Product not added to the store");
+		 }
+		return response;
+	}
+	
+	@PutMapping(path="/modify-product", consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponse modifyProduct(@RequestBody Product bean)
+	{
+		ProductResponse response = new ProductResponse();
+		if(service.modifyProduct(bean))
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription("product data modified in the store");
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("product data not modified in the store");
+		}
+		return response;
+	}
+	
+	@GetMapping(path="/get-byName",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponse searchProductByName(@PathVariable("name") String name)
+	{
+
+		ProductResponse response = new ProductResponse();
+		Product product = service.searchProductByName(name);
+		if(product!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" here is the product your searching for");
+			response.setProduct(Arrays.asList(product));
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("Product not available in the store");
+		}
+		return response;
+	}
+	
+	@GetMapping(path="/get-byCompany",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponse searchProductByCompany(@PathVariable("company") String company)
+	{
+
+		ProductResponse response = new ProductResponse();
+		Product product = service.searchProductByCompany(company);
+		if(product!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" here is the product your searching for");
+			response.setProduct(Arrays.asList(product));
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("Product not available in the store");
+		}
+		return response;
+	}
+	
+	@GetMapping(path="/get-byCategory",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponse searchProductByCategory(@PathVariable("catogory") String cagegory)
+	{
+
+		ProductResponse response = new ProductResponse();
+		Product product = service.searchProductByCategory(cagegory);
+		if(product!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" here is the product your searching for");
+			response.setProduct(Arrays.asList(product));
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("Product not available in the store");
+		}
+		return response;
+	}
+	
+	@GetMapping(path="/get-allByCategory",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ProductResponse getAllProductByCategory(@PathVariable("catogory") String cagegory)
+	{
+
+		ProductResponse response = new ProductResponse();
+		List<Product> products = service.getAllProductByCategory(cagegory);
+		if(products!=null)
+		{
+			response.setStatusCode(201);
+			response.setMessage("success");
+			response.setDescription(" here are the list of products available in store");
+			response.setProduct(products);
+		}
+		else
+		{
+			response.setStatusCode(401);
+			response.setMessage("failure");
+			response.setDescription("Need to add a indent");
+		}
+		return response;
+	}
+
+
+}

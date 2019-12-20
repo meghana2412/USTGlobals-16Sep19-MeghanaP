@@ -1,0 +1,5 @@
+package com.ustglobals.stockmanagement.dto;
+
+public class Order {
+
+}

@@ -1,0 +1,15 @@
+package com.ustglobals.stockmanagement.config;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+
+
+public class ProductConfig {
+
+	public LocalEntityManagerFactoryBean getBean()
+	{
+		LocalEntityManagerFactoryBean bean = new LocalEntityManagerFactoryBean();
+		bean.setPersistenceUnitName("product-unit");
+		return bean;
+	}
+
+
+}

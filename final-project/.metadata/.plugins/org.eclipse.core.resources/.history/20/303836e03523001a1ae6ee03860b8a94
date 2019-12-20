@@ -1,0 +1,52 @@
+package com.ustglobals.stockmanagement.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ustglobals.stockmanagement.dao.ProductDAO;
+import com.ustglobals.stockmanagement.dto.Product;
+
+@Service
+public class ProductServiceImpl implements ProductService{
+	
+	@Autowired
+	private ProductDAO dao;
+
+	@Override
+	public boolean addProduct(Product product) {
+		return dao.addProduct(product);
+	}
+
+	@Override
+	public Product searchProductByName(String name) {
+		return dao.searchProductByName(name);
+	}
+
+	@Override
+	public Product searchProductByCategory(String category) {
+		return dao.searchProductByCategory(category);
+	}
+
+	@Override
+	public Product searchProductByCompany(String company) {
+		return dao.searchProductByCompany(company);
+	}
+
+	@Override
+	public boolean modifyProduct(Product bean) {
+		return dao.modifyProduct(bean);
+	}
+
+	@Override
+	public List<Product> getAllProductByCategory(String category) {
+		return dao.getAllProductByCategory(category);
+	}
+
+	@Override
+	public boolean addTocart() {
+		return dao.addTocart();
+	}
+
+}
