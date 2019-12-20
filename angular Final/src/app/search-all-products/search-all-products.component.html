@@ -1,0 +1,33 @@
+<body>
+    <div class="container mt-4">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-primary thead-dark">
+                <tr>
+                    <th>Index</th>
+                    <th>Product ID</th>
+                    <th>Product name</th>
+                    <th>Category</th>
+                    <th>Comapny</th>
+                    <th>Qunatity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let pro of product; index as i'>
+                    <td>{{i+1}}</td>
+                    <td>{{pro.id}}</td>
+                    <td>{{pro.name}}</td>
+                    <td>{{pro.category}}</td>
+                    <td>{{pro.company}}</td>
+                    <td>{{pro.quantity}}</td>
+                    <td>{{pro.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <button type="button" class="btn btn-dark float-right" routerLink="/getAllProduct">
+                Go Back
+            </button>
+        </div>
+    </div>
+</body>
